@@ -1,15 +1,8 @@
 from telethon import TelegramClient, events, sync
 import pickle
 
-# User(id=1979909536, is_self=True, contact=False, mutual_contact=False, deleted=False, bot=False, bot_chat_history=False, bot_nochats=False, verified=False, restricted=False, min=False, bot_inline_geo=False, support=False, scam=False, apply_min_photo=True, fake=False, access_hash=2118236008595820803, first_name='vei', last_name='tsi', username='vetsinen', phone='380631741784', photo=UserProfilePhoto(photo_id=5188527073361246249, dc_id=2, has_video=False, stripped_thumb=b'\x01\x08\x08\x8d/\x01\x93\x9cu\xe2\x8a(\xa5a\x9f'), status=UserStatusOffline(was_online=datetime.datetime(2021, 11, 9, 9, 40, 13, tzinfo=datetime.timezone.utc)), bot_info_version=None, restriction_reason=[], bot_inline_placeholder=None, lang_code=None)
-
 async def main():
-    # print(client.get_me().stringify())
-    # entity = await client.get_entity('helvetian')
-    # print(entity)
-    # await client.send_message('helvetian', 'Hello, not myself!')
-
-    chat_name = 'opensupport'
+    chat_name = 'openairskyiv'
     chatid = (await client.get_peer_id(chat_name))
     users = []
     async for user in client.iter_participants(chatid):
@@ -32,11 +25,10 @@ client.start()
 with client:
     client.loop.run_until_complete(main())
 
+    # User(id=1979909536, is_self=True, contact=False, mutual_contact=False, deleted=False, bot=False, bot_chat_history=False, bot_nochats=False, verified=False, restricted=False, min=False, bot_inline_geo=False, support=False, scam=False, apply_min_photo=True, fake=False, access_hash=2118236008595820803, first_name='vei', last_name='tsi', username='vetsinen', phone='380631741784', photo=UserProfilePhoto(photo_id=5188527073361246249, dc_id=2, has_video=False, stripped_thumb=b'\x01\x08\x08\x8d/\x01\x93\x9cu\xe2\x8a(\xa5a\x9f'), status=UserStatusOffline(was_online=datetime.datetime(2021, 11, 9, 9, 40, 13, tzinfo=datetime.timezone.utc)), bot_info_version=None, restriction_reason=[], bot_inline_placeholder=None, lang_code=None)
 
-
-
-
-
-
-
+    # print(client.get_me().stringify())
+    # entity = await client.get_entity('helvetian')
+    # print(entity)
+    # await client.send_message('helvetian', 'Hello, not myself!')
 # messages = client.get_messages('vetsinen')
