@@ -9,14 +9,16 @@ async def main():
     # print(entity)
     # await client.send_message('helvetian', 'Hello, not myself!')
 
-    chatid = (await client.get_peer_id('CK_talk'))
+    chat_name = 'opensupport'
+    chatid = (await client.get_peer_id(chat_name))
     users = []
     async for user in client.iter_participants(chatid):
-        users.append({"id":user.id,"first_name": user.first_name,  "username": user.username, "phone": user.phone})
+        if not (user.bot or user.deleted):
+            users.append({"id":user.id,"username": user.username,"mutual_contact":user.mutual_contact, "first_name": user.first_name,"last_name":user.last_name, "phone": user.phone})
 
-    print(users)
+    # print(users)
     print(len(users))
-    with open('CK_talk-users.pickle', 'wb') as f:
+    with open(chat_name+'.pickle', 'wb') as f:
         pickle.dump(users, f)
 
 # These example values won't work. You must get your own api_id and
