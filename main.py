@@ -1,18 +1,31 @@
 from telethon import TelegramClient, events, sync
 import pickle
 
+
 async def main():
-    chat_name = 'openairskyiv'
+    chat_name = "fuckingdances"  # 'openairskyiv'
     chatid = (await client.get_peer_id(chat_name))
     users = []
-    async for user in client.iter_participants(chatid):
-        if not (user.bot or user.deleted):
-            users.append({"id":user.id,"username": user.username,"mutual_contact":user.mutual_contact, "first_name": user.first_name,"last_name":user.last_name, "phone": user.phone})
+    async for server_user in client.iter_participants(chatid):
+        # takes name and surname from contact if present here
+        if not (server_user.bot or server_user.deleted):
+            user = {"id": server_user.id,
+                    "username": server_user.username,
+                    "first_name": server_user.first_name,
+                    "last_name": server_user.last_name,
+                    "phone": server_user.phone,
+                    "mutual_contact": server_user.mutual_contact,
+                    "contact": server_user.contact,
+                    "restricted": server_user.restricted,
+                    }
 
-    # print(users)
+            print(user)
+            users.append(user)
+
     print(len(users))
     with open(chat_name+'.pickle', 'wb') as f:
         pickle.dump(users, f)
+
 
 # These example values won't work. You must get your own api_id and
 # api_hash from https://my.telegram.org, under API Development.
